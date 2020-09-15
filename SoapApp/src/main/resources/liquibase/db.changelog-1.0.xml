@@ -1,0 +1,251 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="1.0.0" author="zahar.zaitsev">
+        <createTable tableName="items">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="price" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_date" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_modified_by_date" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+
+            <column name="brand_id" type="BIGINT"/>
+
+            <column name="manufacturer_id" type="BIGINT"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.1" author="zahar.zaitsev">
+        <createTable tableName="brands">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="country" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="city" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="street" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="house" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_date" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_modified_by_date" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.2" author="zahar.zaitsev">
+        <createTable tableName="categories">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="created_date" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_modified_by_date" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.3" author="zahar.zaitsev">
+        <createTable tableName="manufacturers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="country" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="city" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="street" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="house" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_date" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_modified_by_date" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.4" author="zahar.zaitsev">
+        <createTable tableName="item_category">
+            <column name="item_id" type="BIGINT">
+            </column>
+
+            <column name="category_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.5" author="zahar.zaitsev">
+        <addForeignKeyConstraint baseTableName="item_category"
+                                 baseColumnNames="item_id"
+                                 constraintName="fk_item_categories_item"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="items"/>
+    </changeSet>
+
+    <changeSet id="1.0.6" author="zahar.zaitsev">
+        <addForeignKeyConstraint baseTableName="item_category"
+                                 baseColumnNames="category_id"
+                                 constraintName="fk_category_items_category"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categories"/>
+    </changeSet>
+
+    <changeSet id="1.0.7" author="zahar.zaitsev">
+        <createTable tableName="brand_manufacturer">
+            <column name="brand_id" type="BIGINT">
+            </column>
+
+            <column name="manufacturer_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.8" author="zahar.zaitsev">
+        <addForeignKeyConstraint baseTableName="brand_manufacturer"
+                                 baseColumnNames="brand_id"
+                                 constraintName="fk_brand_manufacturers_brand"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="brands"/>
+    </changeSet>
+
+    <changeSet id="1.0.9" author="zahar.zaitsev">
+        <addForeignKeyConstraint baseTableName="brand_manufacturer"
+                                 baseColumnNames="manufacturer_id"
+                                 constraintName="fk_manufacturer_brands_manufacturer"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="manufacturers"/>
+    </changeSet>
+
+    <changeSet id="1.0.10" author="zahar.zaitsev">
+        <addForeignKeyConstraint baseTableName="items"
+                                 baseColumnNames="brand_id"
+                                 constraintName="fk_brand_items_brand"
+                                 onDelete="SET NULL"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="brands"/>
+    </changeSet>
+
+    <changeSet id="1.0.11" author="zahar.zaitsev">
+        <addForeignKeyConstraint baseTableName="items"
+                                 baseColumnNames="manufacturer_id"
+                                 constraintName="fk_manufacturer_items_manufacturer"
+                                 onDelete="SET NULL"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="manufacturers"/>
+    </changeSet>
+
+    <changeSet id="1.0.12" author="zahar.zaitsev">
+        <createTable tableName="ID_GENERATOR">
+            <column name="next_val" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.13" author="zahar.zaitsev">
+        <insert tableName="ID_GENERATOR">
+            <column name="next_val" value="1000"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

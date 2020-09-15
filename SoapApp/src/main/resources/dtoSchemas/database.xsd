@@ -1,0 +1,868 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://com.producingservice.app.dto.database"
+           targetNamespace="http://com.producingservice.app.dto.database" elementFormDefault="qualified"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="schemas.xmlsoap.org/soap/encoding">
+
+    <xs:element name="getItemByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="item" type="tns:itemDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemByNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemByNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="item" type="tns:itemDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createItemRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="item" type="tns:itemDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createItemResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="createdItem" type="tns:itemDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateItemRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="item" type="tns:itemDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateItemResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="updatedItem" type="tns:itemDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteItemByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteItemByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="answer" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllItemsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anyValue" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllItemsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByBrandIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByBrandIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByManufacturerIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByManufacturerIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByCategoryIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByCategoryIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByCategoryNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByCategoryNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByBrandNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByBrandNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByManufacturerNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByManufacturerNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByDescriptionRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="description" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByDescriptionResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByPriceRangeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="lowValue" type="xs:int"/>
+                <xs:element name="highValue" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getItemsByPriceRangeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items" type="tns:itemDto" maxOccurs="unbounded" minOccurs="0" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+
+<!--    BRANDS-->
+
+
+    <xs:element name="getBrandByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBrandByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brand" type="tns:brandDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBrandByNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBrandByNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brand" type="tns:brandDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBrandByItemIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBrandByItemIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brand" type="tns:brandDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBrandByItemNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBrandByItemNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brand" type="tns:brandDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createBrandRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brand" type="tns:brandDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createBrandResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="createdBrand" type="tns:brandDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateBrandRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brand" type="tns:brandDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateBrandResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="updatedBrand" type="tns:brandDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteBrandByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteBrandByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="answer" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anyValue" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brands" type="tns:brandDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsByManufacturerIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsByManufacturerIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brands" type="tns:brandDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsByManufacturerNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsByManufacturerNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brands" type="tns:brandDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsByCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsByCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brands" type="tns:brandDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsByCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBrandsByCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brands" type="tns:brandDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+<!--    MANUFACTURERS-->
+
+    <xs:element name="getManufacturerByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getManufacturerByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturer" type="tns:manufacturerDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getManufacturerByNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getManufacturerByNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturer" type="tns:manufacturerDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getManufacturerByItemIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getManufacturerByItemIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturer" type="tns:manufacturerDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getManufacturerByItemNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getManufacturerByItemNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturer" type="tns:manufacturerDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createManufacturerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturer" type="tns:manufacturerDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createManufacturerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="createdManufacturer" type="tns:manufacturerDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateManufacturerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturer" type="tns:manufacturerDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateManufacturerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="updatedManufacturer" type="tns:manufacturerDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteManufacturerByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteManufacturerByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="answer" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anyValue" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturers" type="tns:manufacturerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersByBrandNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersByBrandNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturers" type="tns:manufacturerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersByBrandIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersByBrandIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturers" type="tns:manufacturerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersByCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersByCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturers" type="tns:manufacturerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersByCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllManufacturersByCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturers" type="tns:manufacturerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--    CATEGORIES-->
+
+    <xs:element name="getCategoryByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCategoryByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="category" type="tns:categoryDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCategoryByNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCategoryByNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="category" type="tns:categoryDto" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createCategoryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="category" type="tns:categoryDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createCategoryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="createdCategory" type="tns:categoryDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateCategoryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="category" type="tns:categoryDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateCategoryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="updatedCategory" type="tns:categoryDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCategoryByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCategoryByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="answer" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllCategoriesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anyValue" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllCategoriesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categories" type="tns:categoryDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllCategoriesByItemNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllCategoriesByItemNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categories" type="tns:categoryDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllCategoriesByItemIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllCategoriesByItemIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categories" type="tns:categoryDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--    Creation data-->
+
+    <xs:element name="getItemCreationDataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anyValue" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCreationDataResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="metadata" type="tns:createDataDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBrandCreationDataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anyValue" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCategoryCreationDataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anyValue" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getManufacturerCreationDataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anyValue" type="xs:string" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="itemDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" nillable="true"/>
+            <xs:element name="version" type="xs:long" nillable="true"/>
+            <xs:element name="lastModifiedBy" type="xs:string" nillable="true"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="price" type="xs:int"/>
+            <xs:element name="brandDetails" type="tns:brandDto" nillable="true"/>
+            <xs:element name="manufacturer" type="tns:manufacturerDto" nillable="true"/>
+            <xs:element name="categories" type="tns:categoryDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="brandDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" nillable="true"/>
+            <xs:element name="version" type="xs:long" nillable="true"/>
+            <xs:element name="lastModifiedBy" type="xs:string" nillable="true"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="officeAddress" type="tns:addressDto"/>
+            <xs:element name="manufacturersList" type="tns:manufacturerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="manufacturerDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" nillable="true"/>
+            <xs:element name="version" type="xs:long" nillable="true"/>
+            <xs:element name="lastModifiedBy" type="xs:string" nillable="true"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="address" type="tns:addressDto"/>
+            <xs:element name="brandsList" type="tns:brandDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="categoryDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" nillable="true"/>
+            <xs:element name="version" type="xs:long" nillable="true"/>
+            <xs:element name="lastModifiedBy" type="xs:string" nillable="true"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="itemsList" type="tns:itemDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="addressDto">
+        <xs:sequence>
+            <xs:element name="country" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="street" type="xs:string"/>
+            <xs:element name="house" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="createDataDto">
+        <xs:sequence>
+            <xs:element name="itemsMeta" type="tns:metaContainerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            <xs:element name="brandsMeta" type="tns:metaContainerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            <xs:element name="manufacturersMeta" type="tns:metaContainerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            <xs:element name="categoriesMeta" type="tns:metaContainerDto" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="metaContainerDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
