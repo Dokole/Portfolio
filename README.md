@@ -1,7 +1,7 @@
 ## Zaitsev Zahar
 # Portfolio description
-While I was lerning Java and it's ecosystem I wrote a lot of pet-projects, most of them weren't big enought to be shown. 
-In this portdolio I put my largest and well made projects.
+While I was lerning Java, Spring and it's ecosystem I wrote a lot of pet-projects, most of them weren't big enought to be shown. 
+In this portdolio I released my largest and well made projects.
 ### Summary:
 
 ## SOAP endpoint application
