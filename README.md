@@ -51,4 +51,10 @@ I need to point on object creation API. In this application, when we create a ne
 
 **Security:** Security implemented with JWT token validation through REST API. It provides user registration, which can be done only by registered user. User with ADMIN role can register a USER or MANAGER role, user with MANAGER role can register only with USER role, USERs can't register anybody. Also there is a login URI which answers with a token. Token needs to be sent with Authorization header for every request. 
 
-**That's it for now.**
+## Client application (in progress...)
+**Technologies:** Java 14, Spring (Boot, Data, Web, Security), Thymeleaf, Bootstrap, RabbitMQ, MongoDB.
+
+**What's this about:** Client web application for data management, which it receives from REST service. Messaging between different types of employees
+
+### Details
+**Soon**
