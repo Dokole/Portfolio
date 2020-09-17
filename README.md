@@ -54,7 +54,7 @@ I need to point on object creation API. In this application, when we create a ne
 ## Client application (in progress...)
 **Technologies:** Java 14, Spring (Boot, Data, Web, Security), Thymeleaf, Bootstrap, RabbitMQ, MongoDB.
 
-**What's this about:** Client web application for data management, which it receives from REST service. Messaging between different types of employees
+**What's this about:** Client web application for data management, which it receives from REST service. Receiving requests from anywhere else with RabbitMQ. Messaging between different types of employees, possibilities to exchange data objects, create a request to an actual, real storage for items. Save those messages using MongoDB.
 
 ### Details
 **Soon**
