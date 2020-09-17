@@ -1,5 +1,5 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://com.producingservice.app.dto.database"
-           targetNamespace="http://com.producingservice.app.dto.database" elementFormDefault="qualified"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://com/soapdataservice/app/dto"
+           targetNamespace="http://com/soapdataservice/app/dto" elementFormDefault="qualified"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="schemas.xmlsoap.org/soap/encoding">
 
