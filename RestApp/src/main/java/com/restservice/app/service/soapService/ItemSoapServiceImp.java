@@ -41,7 +41,7 @@ public class ItemSoapServiceImp implements ItemSoapService {
         return castDto.itemFromItemDto(itemSoapRepository.getItemById(id));
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer", "Category"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer", "Category"}, allEntries = true)
     @Override
     public ItemCache createItem(ItemCache item) {
         ItemDto itemDto = castDto.itemDtoFromItem(item);
@@ -49,7 +49,7 @@ public class ItemSoapServiceImp implements ItemSoapService {
         return castDto.itemFromItemDto(itemDto);
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer", "Category"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer", "Category"}, allEntries = true)
     @Override
     public ItemCache updateItem(ItemCache item) {
         ItemDto itemDto = castDto.itemDtoFromItem(item);
@@ -57,7 +57,7 @@ public class ItemSoapServiceImp implements ItemSoapService {
         return castDto.itemFromItemDto(itemDto);
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer", "Category"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer", "Category"}, allEntries = true)
     @Override
     public boolean deleteItemById(Long id) {
         return itemSoapRepository.deleteItemById(id);

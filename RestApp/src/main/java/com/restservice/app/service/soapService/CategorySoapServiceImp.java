@@ -49,7 +49,7 @@ public class CategorySoapServiceImp implements CategorySoapService {
         return categories;
     }
 
-    @CacheEvict(cacheNames = {"Category", "Item"})
+    @CacheEvict(cacheNames = {"Category", "Item"}, allEntries = true)
     @Override
     public CategoryCache createCategory(CategoryCache category) {
         CategoryDto categoryDto = castDto.categoryDtoFromCategory(category);
@@ -57,7 +57,7 @@ public class CategorySoapServiceImp implements CategorySoapService {
         return castDto.categoryFromCategoryDto(categoryDto);
     }
 
-    @CacheEvict(cacheNames = {"Category", "Item"})
+    @CacheEvict(cacheNames = {"Category", "Item"}, allEntries = true)
     @Override
     public CategoryCache updateCategory(CategoryCache category) {
         CategoryDto categoryDto = castDto.categoryDtoFromCategory(category);
@@ -65,7 +65,7 @@ public class CategorySoapServiceImp implements CategorySoapService {
         return castDto.categoryFromCategoryDto(categoryDto);
     }
 
-    @CacheEvict(cacheNames = {"Category", "Item"})
+    @CacheEvict(cacheNames = {"Category", "Item"}, allEntries = true)
     @Override
     public boolean deleteCategoryById(Long id) {
         return categorySoapRepository.deleteCategoryById(id);

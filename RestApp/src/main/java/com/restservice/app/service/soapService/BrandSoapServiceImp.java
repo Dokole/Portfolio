@@ -68,7 +68,7 @@ public class BrandSoapServiceImp implements BrandSoapService {
         return brands;
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"}, allEntries = true)
     @Override
     public BrandCache createBrand(BrandCache brand) {
         BrandDto brandDto = castDto.brandDtoFromBrand(brand);
@@ -76,7 +76,7 @@ public class BrandSoapServiceImp implements BrandSoapService {
         return castDto.brandFromBrandDto(brandDto);
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"}, allEntries = true)
     @Override
     public BrandCache updateBrand(BrandCache brand) {
         BrandDto brandDto = castDto.brandDtoFromBrand(brand);
@@ -84,7 +84,7 @@ public class BrandSoapServiceImp implements BrandSoapService {
         return castDto.brandFromBrandDto(brandDto);
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"}, allEntries = true)
     @Override
     public boolean deleteBrandById(Long id) {
         return brandSoapRepository.deleteBrandById(id);

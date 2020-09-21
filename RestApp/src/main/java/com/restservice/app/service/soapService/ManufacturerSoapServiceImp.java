@@ -68,7 +68,7 @@ public class ManufacturerSoapServiceImp implements ManufacturerSoapService {
         return manufacturers;
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"}, allEntries = true)
     @Override
     public ManufacturerCache createManufacturer(ManufacturerCache manufacturer) {
         ManufacturerDto manufacturerDto = castDto.manufacturerDtoFromManufacturer(manufacturer);
@@ -76,7 +76,7 @@ public class ManufacturerSoapServiceImp implements ManufacturerSoapService {
         return castDto.manufacturerFromManufacturerDto(manufacturerDto);
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"}, allEntries = true)
     @Override
     public ManufacturerCache updateManufacturer(ManufacturerCache manufacturer) {
         ManufacturerDto manufacturerDto = castDto.manufacturerDtoFromManufacturer(manufacturer);
@@ -84,7 +84,7 @@ public class ManufacturerSoapServiceImp implements ManufacturerSoapService {
         return castDto.manufacturerFromManufacturerDto(manufacturerDto);
     }
 
-    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"})
+    @CacheEvict(cacheNames = {"Brand", "Item", "Manufacturer"}, allEntries = true)
     @Override
     public boolean deleteManufacturerById(Long id) {
         return manufacturerSoapRepository.deleteManufacturerById(id);
